@@ -1,0 +1,40 @@
+@import './reset';
+
+:root {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+  font-size: 14px;
+  height: 100%;
+  background-color: #fff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1130px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+#root {
+  min-height: 100%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

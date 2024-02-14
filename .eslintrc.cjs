@@ -19,7 +19,6 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'warn',
-    'no-console': 'off',
     'func-names': 'off',
     'object-shorthand': 'off',
   },
