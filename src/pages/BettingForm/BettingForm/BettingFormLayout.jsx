@@ -1,4 +1,4 @@
-import LoaderMini from '../../../components/App/Loaders/LoaderMini';
+import LoaderMini from '../../../components/Loaders/LoaderMini';
 import styles from './BettingForm.module.scss';
 
 const BettingFormLayout = (props) => {
