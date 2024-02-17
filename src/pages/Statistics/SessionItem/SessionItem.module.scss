@@ -1,0 +1,59 @@
+@use '../../../styles/vars';
+
+.item {
+  @extend %block-wrapper;
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+  &:hover {
+    cursor: pointer;
+    .plus {
+      filter: invert(33%) sepia(61%) saturate(5520%) hue-rotate(202deg) brightness(107%)
+        contrast(101%);
+    }
+  }
+  &.active {
+    .plus {
+      transform: rotate(45deg);
+    }
+    .content__hidden {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+  }
+}
+
+.content {
+  &__visible {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  &__hidden {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+}
+
+.info {
+  display: flex;
+}
+
+.text {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.plus {
+  transition: transform 0.5s;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.loader {
+  width: 20px;
+}

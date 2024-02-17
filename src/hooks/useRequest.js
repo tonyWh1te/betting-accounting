@@ -30,14 +30,7 @@ const useRequest = () => {
       return response;
     } catch (error) {
       setProcess('error');
-
-      if (error.response) {
-        throw new Error(error.response.data, error.response.status, error.response.headers);
-      } else if (error.request) {
-        throw new Error('Something went wrong');
-      } else {
-        throw new Error(error.message);
-      }
+      throw new Error('Что-то пошло не так. Попробуйте позже.');
     }
   }, []);
 

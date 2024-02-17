@@ -1,7 +1,12 @@
+import SessionList from '../SessionList/SessionList';
+import styles from './StatisticsPage.module.scss';
+
 const StatisticsPage = () => {
   return (
-    <div>
-      <h1>Statistics</h1>
+    <div className={styles.wrapper}>
+      <div className="container">
+        <SessionList />
+      </div>
     </div>
   );
 };
