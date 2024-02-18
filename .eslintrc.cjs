@@ -21,5 +21,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'func-names': 'off',
     'object-shorthand': 'off',
+    'no-console': 'warn',
   },
 };

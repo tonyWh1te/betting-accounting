@@ -1,0 +1,30 @@
+@use '../../styles/vars';
+
+.input {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background: transparent;
+  padding: 5px 10px;
+  width: 100%;
+  font-size: 16px;
+  transition: all 0.15s ease-in-out;
+}
+
+.input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.wrapper {
+  height: 55px;
+  position: relative;
+  width: 100%;
+}
+
+.error {
+  margin: 3px 0 0 0;
+  padding: 0;
+  color: vars.$red;
+  text-align: right;
+}

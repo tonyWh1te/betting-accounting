@@ -8,7 +8,6 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 15px;
 
   & > .col {
     padding-right: 5px;
@@ -28,47 +27,8 @@
   margin-bottom: 5px;
 }
 
-.input {
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  padding: 5px 10px;
-  width: 100%;
-  font-size: 16px;
-  transition: all 0.15s ease-in-out;
-}
-
-.input:focus {
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
 .button {
-  padding: 10px 12px;
-  font-weight: 400;
-  text-align: center;
-  transition: background-color 0.15s ease-in-out;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 16px;
-
-  &__primary {
-    background-color: vars.$blue;
-    &:hover {
-      background-color: #0069d9;
-    }
-  }
-
-  &__secondary {
-    background-color: vars.$gray;
-    &:hover {
-      background-color: #5a6268;
-    }
-  }
-}
-
-.button__row {
-  margin: 0 5px;
+  margin: 0 5px 10px;
   &:first-child {
     margin-left: 0;
   }
@@ -82,7 +42,7 @@
 }
 
 .lose {
-  background-color: #ff0000;
+  background-color: vars.$red;
   &:hover {
     background-color: #8b0000;
   }

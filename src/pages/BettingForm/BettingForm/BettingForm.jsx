@@ -12,11 +12,12 @@ const BettingForm = () => {
     percentage: 0,
     bet: 0,
     outcome: '',
+    errors: false,
   };
 
   const [bettingData, setBettingData] = useState(init);
 
-  const { setBet, setProcess, process, clearError } = useBetService();
+  const { setBet, setProcess, process } = useBetService();
 
   const onChangeBetting = (e) => {
     const { name, value, dataset } = e.target;
@@ -29,29 +30,27 @@ const BettingForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    clearError();
+    const { favorite, challenger, total, outcome } = bettingData;
 
-    if (
-      !bettingData.outcome ||
-      !bettingData.favorite ||
-      !bettingData.challenger ||
-      !bettingData.total ||
-      !bettingData.percentage ||
-      !bettingData.bet
-    ) {
-      console.log('Fill in all fields');
-      return;
-    }
+    const errors = !outcome || !favorite || !challenger || !total;
 
-    setBet(bettingData)
+    setBettingData((prevState) => ({
+      ...prevState,
+      errors,
+    }));
+
+    if (errors) return;
+
+    const data = { favorite, challenger, total, outcome };
+
+    setBet(data)
       .then(onDataSend)
       .catch((e) => toast.error(e.message));
   };
 
-  const onDataSend = (data) => {
-    console.log(data);
+  const onDataSend = () => {
     setProcess('success');
-    toast.success('Your bet was successfully placed!');
+    toast.success('Ставка успешно размещена!');
     onFormReset();
   };
 
@@ -62,10 +61,14 @@ const BettingForm = () => {
   const onCalculating = () => {
     const { favorite, challenger, total } = bettingData;
 
-    if (!favorite || !challenger || !total) {
-      console.log('Fill in all fields');
-      return;
-    }
+    const errors = !favorite || !challenger || !total;
+
+    setBettingData((prevState) => ({
+      ...prevState,
+      errors,
+    }));
+
+    if (errors) return;
 
     const bet = favorite + challenger;
     const percentage = (Number(favorite) / bet) * 100;

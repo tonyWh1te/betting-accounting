@@ -35,7 +35,14 @@ const useBetService = () => {
     return response.data;
   };
 
-  return { setBet, process, setProcess, clearError, getSessions, getSessionBets };
+  const signIn = async (user) => {
+    const config = getConfig(user);
+    const response = await request('/auth', config);
+
+    return response.data;
+  };
+
+  return { setBet, process, setProcess, clearError, getSessions, getSessionBets, signIn };
 };
 
 export default useBetService;

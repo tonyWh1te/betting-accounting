@@ -1,0 +1,27 @@
+@use '../../../styles/vars';
+
+.auth {
+  width: 100%;
+}
+
+.inner {
+  @extend %block-wrapper;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.button {
+  width: 100%;
+}

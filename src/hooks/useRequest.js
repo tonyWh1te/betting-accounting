@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
-import { API_BASE_URL } from '../utils/constants';
+import { API_BASE_URL, errosByCode } from '../utils/constants';
 
 const useRequest = () => {
   const [process, setProcess] = useState('waiting');
@@ -30,7 +30,14 @@ const useRequest = () => {
       return response;
     } catch (error) {
       setProcess('error');
-      throw new Error('Что-то пошло не так. Попробуйте позже.');
+
+      if (error.response) {
+        const code = error.response.status;
+
+        throw new Error(errosByCode[code] ?? errosByCode.default);
+      } else {
+        throw new Error(errosByCode.default);
+      }
     }
   }, []);
 

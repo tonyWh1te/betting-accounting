@@ -1,0 +1,25 @@
+@use '../../styles/vars';
+
+.button {
+  padding: 10px 12px;
+  font-weight: 400;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.primary {
+  background-color: vars.$blue;
+  &:hover {
+    background-color: #0069d9;
+  }
+}
+
+.secondary {
+  background-color: vars.$gray;
+  &:hover {
+    background-color: #5a6268;
+  }
+}

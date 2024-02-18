@@ -1,4 +1,6 @@
 import LoaderMini from '../../../components/Loaders/LoaderMini';
+import Input from '../../../components/Input/Input';
+import Button from '../../../components/Button/Button';
 import styles from './BettingForm.module.scss';
 
 const BettingFormLayout = (props) => {
@@ -12,6 +14,8 @@ const BettingFormLayout = (props) => {
     isSubmitting,
   } = props;
 
+  const { favorite, challenger, total, percentage, bet, outcome, errors } = bettingData;
+
   const submitBtnContent = isSubmitting ? <LoaderMini /> : 'S';
 
   return (
@@ -24,13 +28,13 @@ const BettingFormLayout = (props) => {
           >
             Фаворит
           </label>
-          <input
-            className={styles.input}
+          <Input
+            required
             type="number"
-            id="favorite"
             name="favorite"
+            value={favorite}
+            errors={errors}
             onChange={onChangeBetting}
-            value={bettingData.favorite}
           />
         </div>
         <div className={styles.col}>
@@ -40,13 +44,13 @@ const BettingFormLayout = (props) => {
           >
             Претендент
           </label>
-          <input
-            className={styles.input}
+          <Input
+            required
             type="number"
-            id="challenger"
             name="challenger"
+            value={challenger}
+            errors={errors}
             onChange={onChangeBetting}
-            value={bettingData.challenger}
           />
         </div>
       </div>
@@ -58,13 +62,13 @@ const BettingFormLayout = (props) => {
           >
             Банк
           </label>
-          <input
-            className={styles.input}
+          <Input
+            required
             type="number"
-            id="total"
             name="total"
+            value={total}
+            errors={errors}
             onChange={onChangeBetting}
-            value={bettingData.total}
           />
         </div>
         <div className={styles.col}>
@@ -74,13 +78,13 @@ const BettingFormLayout = (props) => {
           >
             %
           </label>
-          <input
-            className={styles.input}
-            type="number"
-            id="percentage"
-            name="percentage"
+          <Input
             readOnly
-            value={bettingData.percentage}
+            type="number"
+            name="percentage"
+            value={percentage}
+            errors={errors}
+            onChange={onChangeBetting}
           />
         </div>
       </div>
@@ -92,67 +96,73 @@ const BettingFormLayout = (props) => {
           >
             Ставка
           </label>
-          <input
-            className={styles.input}
-            type="number"
-            id="bet"
-            name="bet"
+          <Input
             readOnly
-            value={bettingData.bet}
+            type="number"
+            name="bet"
+            value={bet}
+            errors={errors}
+            onChange={onChangeBetting}
           />
         </div>
       </div>
       <div className={styles.row}>
-        <button
-          className={`${styles.button} ${styles.button__primary} ${styles.button__row}`}
+        <Button
+          className={styles.button}
+          variant="primary"
           type="button"
           onClick={onCalculating}
         >
           Рассчитать
-        </button>
-        <button
-          className={`${styles.button} ${styles.button__secondary} ${styles.button__row}`}
+        </Button>
+        <Button
+          className={styles.button}
+          variant="secondary"
           type="button"
           onClick={onFormReset}
         >
           Сброс
-        </button>
+        </Button>
       </div>
       <div className={styles.row}>
-        <button
-          className={`${styles.button} ${styles.button__secondary} ${styles.button__row} ${getActiveClass(bettingData.outcome, 'win')}`}
+        <Button
+          className={`${styles.button} ${getActiveClass(outcome, 'win')}`}
+          variant="secondary"
           type="button"
           name="outcome"
           data-outcome="win"
           onClick={onChangeBetting}
         >
           W
-        </button>
-        <button
-          className={`${styles.button} ${styles.button__secondary} ${styles.button__row} ${getActiveClass(bettingData.outcome, 'lose')}`}
+        </Button>
+        <Button
+          className={`${styles.button} ${getActiveClass(outcome, 'lose')}`}
+          variant="secondary"
           type="button"
           name="outcome"
           data-outcome="lose"
           onClick={onChangeBetting}
         >
           L
-        </button>
-        <button
-          className={`${styles.button} ${styles.button__primary} ${styles.button__row}`}
+        </Button>
+        <Button
+          className={`${styles.button} ${getActiveClass(outcome, 'lose')}`}
+          variant="primary"
           type="submit"
-          onClick={onSubmit}
           disabled={isSubmitting}
+          onClick={onSubmit}
         >
           {submitBtnContent}
-        </button>
+        </Button>
       </div>
       <div className={`${styles.row} ${styles.voice}`}>
-        <button
-          className={`${styles.button} ${styles.button__secondary} ${styles.voice}`}
+        <Button
+          className={styles.voice}
+          variant="secondary"
           type="button"
         >
           Голос
-        </button>
+        </Button>
       </div>
     </form>
   );
