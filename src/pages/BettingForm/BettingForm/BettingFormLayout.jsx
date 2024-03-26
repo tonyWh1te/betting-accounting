@@ -106,7 +106,7 @@ const BettingFormLayout = (props) => {
           />
         </div>
       </div>
-      <div className={styles.row}>
+      <div className={styles.rowButton}>
         <Button
           className={styles.button}
           variant="primary"
@@ -124,7 +124,7 @@ const BettingFormLayout = (props) => {
           Сброс
         </Button>
       </div>
-      <div className={styles.row}>
+      <div className={styles.rowButton}>
         <Button
           className={`${styles.button} ${getActiveClass(outcome, 'win')}`}
           variant="secondary"
@@ -146,7 +146,7 @@ const BettingFormLayout = (props) => {
           L
         </Button>
         <Button
-          className={`${styles.button} ${getActiveClass(outcome, 'lose')}`}
+          className={`${styles.button}`}
           variant="primary"
           type="submit"
           disabled={isSubmitting}
@@ -155,7 +155,7 @@ const BettingFormLayout = (props) => {
           {submitBtnContent}
         </Button>
       </div>
-      <div className={`${styles.row} ${styles.voice}`}>
+      <div className={`${styles.rowButton} ${styles.voice}`}>
         <Button
           className={styles.voice}
           variant="secondary"

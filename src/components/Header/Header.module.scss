@@ -22,3 +22,9 @@
     color: vars.$blue;
   }
 }
+
+@include vars.media('max', 'xs') {
+  .list {
+    justify-content: center;
+  }
+}

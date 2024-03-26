@@ -12,6 +12,7 @@ const useBetService = () => {
 
   const getConfig = (data) => ({
     baseURL: API_BASE_URL,
+    headers: { 'Content-Type': 'application/json' },
     method: 'post',
     data,
   });
@@ -36,7 +37,7 @@ const useBetService = () => {
   };
 
   const signIn = async (user) => {
-    const config = getConfig(user);
+    const config = { ...getConfig(user), withCredentials: true };
     const response = await request('/auth', config);
 
     return response.data;
